@@ -159,28 +159,28 @@ useEffect(() => {
 
 
   return (
-    <div className="relative">
+    <div className="relative" style={{ overflow: showSplash ? 'hidden' : 'auto' }}>
       {showSplash && (
         <SplashScreen onComplete={() => setShowSplash(false)} />
       )}
 
+      <div style={{ display: showSplash ? 'none' : 'block' }}>
+        <div
+          ref={fixedBackgroundRef}
+          className="fixed inset-0 bg-center bg-no-repeat z-[0]
+                     bg-cover
+                     sm:bg-cover
+                     max-sm:bg-cover max-sm:bg-center"
+          style={{
+            backgroundImage: `url('/pc/bg.webp')`,
+            backgroundAttachment: 'fixed',
+            backgroundSize: window.innerWidth < 640 ? 'cover' : 'cover'
+          }}
+        >
 
-<div
-  ref={fixedBackgroundRef}
-  className="fixed inset-0 bg-center bg-no-repeat z-[0] 
-             bg-cover 
-             sm:bg-cover 
-             max-sm:bg-cover max-sm:bg-center"
-  style={{
-    backgroundImage: `url('/pc/bg.webp')`,
-    backgroundAttachment: 'fixed',
-    backgroundSize: window.innerWidth < 640 ? 'cover' : 'cover'
-  }}
->
-
-  {/* Dark overlay */}
-  <div className="absolute inset-0 bg-black/0" />
-</div>
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-black/0" />
+        </div>
  
       {/* Main Hero Section */}
       <div
@@ -278,22 +278,22 @@ useEffect(() => {
         </div>
       )}
 
-      {/* Portfolio Section */}
-      <div
-        ref={portfolioSectionRef}
-        className="relative w-full bg-[#f0f0f0] z-[100] rounded-t-[3rem] rounded-b-[3rem] opacity-100 portfolio-edge-shine"
-        style={{
-          minHeight: window.innerWidth < 768 ? 'calc(var(--mobile-vh) * 100)' : '100vh',
-          zIndex: 9999,
-          boxShadow: `
-            0 -20px 60px -15px rgba(255, 255, 255, 0.8),
-            0 -40px 100px -20px rgba(255, 255, 255, 0.5),
-            inset 0 1px 0 0 rgba(255, 255, 255, 0.9),
-            0 20px 60px -15px rgba(0, 0, 0, 0.3),
-            0 40px 100px -20px rgba(0, 0, 0, 0.2)
-          `
-        }}
-      >
+        {/* Portfolio Section */}
+        <div
+          ref={portfolioSectionRef}
+          className="relative w-full bg-[#f0f0f0] z-[100] rounded-t-[3rem] rounded-b-[3rem] opacity-100 portfolio-edge-shine"
+          style={{
+            minHeight: window.innerWidth < 768 ? 'calc(var(--mobile-vh) * 100)' : '100vh',
+            zIndex: 9999,
+            boxShadow: `
+              0 -20px 60px -15px rgba(255, 255, 255, 0.8),
+              0 -40px 100px -20px rgba(255, 255, 255, 0.5),
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.9),
+              0 20px 60px -15px rgba(0, 0, 0, 0.3),
+              0 40px 100px -20px rgba(0, 0, 0, 0.2)
+            `
+          }}
+        >
 
         <div className="container mx-auto px-6 py-20">
           <div className="relative text-center mb-16 z-20">
@@ -381,80 +381,80 @@ useEffect(() => {
 
 
         </div>
-      </div>
+        </div>
 
+        {/* Contact Section */}
+        {showContact && (
+          <div
+            id="contact-section"
+            className={`fixed bottom-0 left-0 right-0 w-full overflow-hidden flex flex-col items-center justify-center z-30 bg-transparent opacity-0 animate-fade-in-delayed`}
+            style={{
+              height: window.innerWidth < 768 ? 'calc(var(--mobile-vh) * 100)' : '100vh',
+              animationDelay: '0.2s',
+              animationFillMode: 'forwards',
+              pointerEvents: 'auto'
+            }}
+          >
+            {/* Main Heading */}
+            <h2 className="text-5xl md:text-7xl font-bosenAlt text-[#181f22] text-center mb-0 tracking-wide">
+              LET'S START A CONVERSATION
+            </h2>
 
-     {/* Contact Section */}
-      {showContact && (
-        <div
-          id="contact-section"
-          className={`fixed bottom-0 left-0 right-0 w-full overflow-hidden flex flex-col items-center justify-center z-30 bg-transparent opacity-0 animate-fade-in-delayed`}
-          style={{
-            height: window.innerWidth < 768 ? 'calc(var(--mobile-vh) * 100)' : '100vh',
-            animationDelay: '0.2s', 
-            animationFillMode: 'forwards',
-            pointerEvents: 'auto'
-          }}
-        > 
-         {/* Main Heading */}
-          <h2 className="text-5xl md:text-7xl font-bosenAlt text-[#181f22] text-center mb-0 tracking-wide">
-            LET'S START A CONVERSATION
-          </h2>
+            {/* Subheading */}
+            <p className="text-[#181f22] text-1xl md:text-4xl lg:text-4xl ibm-font mb-8 text-center">
+              Drop me a message, let's make something users will love.
+            </p>
 
-         {/* Subheading */}
-<p className="text-[#181f22] text-1xl md:text-4xl lg:text-4xl ibm-font mb-8 text-center">
-  Drop me a message, let's make something users will love.
-</p>
-
-<div className="space-y-10 text-center">
-            {/* Email */}
-            <div className="flex flex-col items-center gap-2">
-              <Mail className="text-[#181f22] w-8 h-8" />
-              <a
-                href="https://mail.google.com/mail/?view=cm&to=Aamirnaqvi03@gmail.com" target="_blank"
-                className="text-[#181f22] font-bosenAlt text-xl md:text-xl lg:text-2xl tracking-wide hover:text-blue-500 transition-colors duration-200"
-              >
-                AAMIRNAQVI03@GMAIL.COM
-              </a>
-              <p className="text-[#181f22] text-xl md:text-1xl lg:text-2xl ibm-font mb-0 text-center">
-  Let's create something that actually works.
-</p>
-            </div>
-
-            {/* LinkedIn */}
-            <div className="flex flex-col items-center gap-0">
-              <Linkedin className="text-[#181f22] w-8 h-8" />
-              <a
-                href="https://www.linkedin.com/in/aamir-naqvi/"
-                target="_blank"
-                rel="noopener noreferrer"
-  className="text-[#181f22] font-bosenAlt text-xl md:text-xl lg:text-2xl tracking-wide hover:text-blue-500 transition-colors duration-200"
-              >
-                LINKEDIN
-              </a>
-              <p className="text-[#181f22] text-xl md:text-1xl lg:text-2xl ibm-font mb-0 text-center">
-          Explore my work and journey
-              </p>
-            </div>
-
-            {/* Instagram */}
-            <div className="flex flex-col items-center gap-2">
-              <Instagram className="text-[#181f22] w-8 h-8" />
-              <a
-                href="https://www.instagram.com/aamir.naqvii/"
-                target="_blank"
-                rel="noopener noreferrer"
+            <div className="space-y-10 text-center">
+              {/* Email */}
+              <div className="flex flex-col items-center gap-2">
+                <Mail className="text-[#181f22] w-8 h-8" />
+                <a
+                  href="https://mail.google.com/mail/?view=cm&to=Aamirnaqvi03@gmail.com" target="_blank"
                   className="text-[#181f22] font-bosenAlt text-xl md:text-xl lg:text-2xl tracking-wide hover:text-blue-500 transition-colors duration-200"
-              >
-                INSTAGRAM
-              </a>
-           <p className="text-[#181f22] text-xl md:text-1xl lg:text-2xl ibm-font mb-0 text-center">
-                Tap in for visuals with purpose. - follow the flow.
-              </p>
+                >
+                  AAMIRNAQVI03@GMAIL.COM
+                </a>
+                <p className="text-[#181f22] text-xl md:text-1xl lg:text-2xl ibm-font mb-0 text-center">
+                  Let's create something that actually works.
+                </p>
+              </div>
+
+              {/* LinkedIn */}
+              <div className="flex flex-col items-center gap-0">
+                <Linkedin className="text-[#181f22] w-8 h-8" />
+                <a
+                  href="https://www.linkedin.com/in/aamir-naqvi/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#181f22] font-bosenAlt text-xl md:text-xl lg:text-2xl tracking-wide hover:text-blue-500 transition-colors duration-200"
+                >
+                  LINKEDIN
+                </a>
+                <p className="text-[#181f22] text-xl md:text-1xl lg:text-2xl ibm-font mb-0 text-center">
+                  Explore my work and journey
+                </p>
+              </div>
+
+              {/* Instagram */}
+              <div className="flex flex-col items-center gap-2">
+                <Instagram className="text-[#181f22] w-8 h-8" />
+                <a
+                  href="https://www.instagram.com/aamir.naqvii/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#181f22] font-bosenAlt text-xl md:text-xl lg:text-2xl tracking-wide hover:text-blue-500 transition-colors duration-200"
+                >
+                  INSTAGRAM
+                </a>
+                <p className="text-[#181f22] text-xl md:text-1xl lg:text-2xl ibm-font mb-0 text-center">
+                  Tap in for visuals with purpose. - follow the flow.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }
