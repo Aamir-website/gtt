@@ -181,102 +181,102 @@ useEffect(() => {
           {/* Dark overlay */}
           <div className="absolute inset-0 bg-black/0" />
         </div>
- 
-      {/* Main Hero Section */}
-      <div
-        ref={heroRef}
-        className="relative w-full overflow-hidden bg-transparent"
-        style={{
-          minHeight: window.innerWidth < 768 ? 'calc(var(--mobile-vh) * 100)' : '100vh',
-          height: window.innerWidth < 768 ? 'calc(var(--mobile-vh) * 100)' : '100vh'
-        }}
-      >
-        {/* Mobile Images - Stacked full screen */}
-        <div className="md:hidden">
-          {mobileImages.map((img, index) => (
-            <div
-              key={index}
-              ref={(el) => (mobileImagesRef.current[index] = el)}
-              className="mobile-image hero-image-layer fixed inset-0 w-full h-full"
-              style={{
-                zIndex: img.zIndex,
-                animation: img.isStatic ? 'none' : `slideUp 1s ease-out ${img.delay}s forwards`,
-                transform: img.isStatic ? 'translateY(0)' : 'translateY(100vh)',
-              }}
-            >
-              <img
-                src={img.src}
-                alt={`Mobile layer ${index + 1}`}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          ))}
-        </div>
 
-        {/* Desktop Images - Stacked full screen */}
-        <div className="hidden md:block">
-          {desktopImages.map((img, index) => (
-            <div
-              key={index}
-              ref={(el) => (desktopImagesRef.current[index] = el)}
-              className="desktop-image hero-image-layer fixed inset-0 w-full h-full overflow-hidden"
-              style={{
-                zIndex: img.isStatic ? 0 : index + 10,
-                animation: img.isStatic ? 'none' : `slideUp 1s ease-out ${img.delay}s forwards`,
-                transform: img.isStatic ? 'translateY(0)' : 'translateY(100vh)',
-              }}
-            >
-              <img
-                src={img.src}
-                alt={`Desktop layer ${index + 1}`}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Bouncing Arrow */}
-      {showArrow && (
+        {/* Main Hero Section */}
         <div
-          ref={arrowRef}
-          className="fixed left-1/2 -translate-x-1/2 z-[90] bounce-arrow"
+          ref={heroRef}
+          className="relative w-full overflow-hidden bg-transparent"
           style={{
-            bottom: window.innerWidth < 768 ? '10vh' : '5vh',
+            minHeight: window.innerWidth < 768 ? 'calc(var(--mobile-vh) * 100)' : '100vh',
+            height: window.innerWidth < 768 ? 'calc(var(--mobile-vh) * 100)' : '100vh'
           }}
         >
-          <div
-            className="relative flex items-center justify-center"
-            style={{
-              width: '80px',
-              height: '80px',
-              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.1))',
-              borderRadius: '50%',
-              backdropFilter: 'blur(10px)',
-              boxShadow: `
-                0 8px 32px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.4),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.2),
-                0 0 0 1px rgba(255, 255, 255, 0.2)
-              `,
-            }}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="36"
-              height="36"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#ffffff"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M12 5v14M19 12l-7 7-7-7" />
-            </svg>
+          {/* Mobile Images - Stacked full screen */}
+          <div className="md:hidden">
+            {mobileImages.map((img, index) => (
+              <div
+                key={index}
+                ref={(el) => (mobileImagesRef.current[index] = el)}
+                className="mobile-image hero-image-layer fixed inset-0 w-full h-full"
+                style={{
+                  zIndex: img.zIndex,
+                  animation: img.isStatic ? 'none' : `slideUp 1s ease-out ${img.delay}s forwards`,
+                  transform: img.isStatic ? 'translateY(0)' : 'translateY(100vh)',
+                }}
+              >
+                <img
+                  src={img.src}
+                  alt={`Mobile layer ${index + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop Images - Stacked full screen */}
+          <div className="hidden md:block">
+            {desktopImages.map((img, index) => (
+              <div
+                key={index}
+                ref={(el) => (desktopImagesRef.current[index] = el)}
+                className="desktop-image hero-image-layer fixed inset-0 w-full h-full overflow-hidden"
+                style={{
+                  zIndex: img.isStatic ? 0 : index + 10,
+                  animation: img.isStatic ? 'none' : `slideUp 1s ease-out ${img.delay}s forwards`,
+                  transform: img.isStatic ? 'translateY(0)' : 'translateY(100vh)',
+                }}
+              >
+                <img
+                  src={img.src}
+                  alt={`Desktop layer ${index + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ))}
           </div>
         </div>
-      )}
+
+        {/* Bouncing Arrow */}
+        {showArrow && (
+          <div
+            ref={arrowRef}
+            className="fixed left-1/2 -translate-x-1/2 z-[90] bounce-arrow"
+            style={{
+              bottom: window.innerWidth < 768 ? '10vh' : '5vh',
+            }}
+          >
+            <div
+              className="relative flex items-center justify-center"
+              style={{
+                width: '80px',
+                height: '80px',
+                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.1))',
+                borderRadius: '50%',
+                backdropFilter: 'blur(10px)',
+                boxShadow: `
+                  0 8px 32px rgba(0, 0, 0, 0.3),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.4),
+                  inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+                  0 0 0 1px rgba(255, 255, 255, 0.2)
+                `,
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="36"
+                height="36"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#ffffff"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M12 5v14M19 12l-7 7-7-7" />
+              </svg>
+            </div>
+          </div>
+        )}
 
         {/* Portfolio Section */}
         <div
